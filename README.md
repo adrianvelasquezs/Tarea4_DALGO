@@ -13,6 +13,7 @@ encuentran archivos varios utilizados para la realización de los problemas (por
 
 **Nombre del archivo ejecutable:** `MainProblem1.java`
 
+#### Consideraciones
 Para ejecutar el programa, es necesario pasar como argumento la ubicación del archivo de entrada.
 Por ejemplo, si mi archivo se encuentra en la carpeta `C:/p1/src/documentos` y se llama `input.txt`, entonces el 
 comando para ejecutar el programa sería:  
@@ -25,13 +26,15 @@ Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea,
 (puede redirigir la salida siguiendo las instrucciones anteriores):  
 `java MainProblem1.java "[ubicacion_del_proyecto]/problema1/inputProblem1.txt"`  
 
-1) El formato los archivo de entrada son líneas de la forma  
+#### Formato de entrada y salida
+1) El formato del archivo de entrada son líneas de la forma  
 `[origen] [destino] [costo]`  
 separadas por tabulaciones.  
 2) El formato de la salida del programa son líneas de la forma  
 `source: [origen], destination: [destino], weight: [costo]`  
 separadas por tabulaciones.
 
+#### Descripción de la implementación
 Finalmente, para resolver el problema se implementaron 3 algoritmos diferentes, los cuales fueron
 el algoritmo de Dijkstra, el algoritmo de Bellman Ford y el algoritmo de Floyd Warshall. Para cada uno de estos
 se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraMST.java`, 
