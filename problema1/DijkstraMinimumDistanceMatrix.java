@@ -3,16 +3,16 @@ package problema1;
 import java.util.*;
 
 /**
- * Dijkstra implementation for the Minimum Spanning Tree problem.
+ * Dijkstra implementation for the Minimum Distance Matrix problem.
  *
  * @author Adrian Velasquez
  */
-public class DijkstraAdjacencyMatrix implements AdjacencyMatrix
+public class DijkstraMinimumDistanceMatrix implements MinimumDistanceMatrix
 {
     private static final int INFINITY = Integer.MAX_VALUE;
 
     @Override
-    public int[][] createAdjacencyMatrix( List<WeightedDirectedEdge> graph )
+    public int[][] createMinimumDistanceMatrix(List<WeightedDirectedEdge> graph )
     {
         // set up the matrix
         int numVertices = findNumberOfVertices( graph );

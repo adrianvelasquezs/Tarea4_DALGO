@@ -17,15 +17,15 @@ import java.util.List;
 public class MainProblem1
 {
     /**
-     * Finds the adjacency matrix for the given graph file.
+     * Finds the minimum distance matrix for the given graph file.
      * @param graphFile File with the graph edges
      * @throws IOException If the file can not be processed
      */
     public void findAdjacencyMatrix(String graphFile ) throws IOException
     {
         List<WeightedDirectedEdge> graph = loadGraph( graphFile );
-        AdjacencyMatrix algorithm = new DijkstraAdjacencyMatrix(); // CHANGE ALGORITHM HERE
-        int[][] matrix = algorithm.createAdjacencyMatrix( graph );
+        MinimumDistanceMatrix algorithm = new DijkstraMinimumDistanceMatrix(); // CHANGE ALGORITHM HERE
+        int[][] matrix = algorithm.createMinimumDistanceMatrix( graph );
         printMatrix(matrix);
     }
 

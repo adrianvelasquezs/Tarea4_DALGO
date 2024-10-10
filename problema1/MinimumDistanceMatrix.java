@@ -3,18 +3,18 @@ package problema1;
 import java.util.List;
 
 /**
- * Minimum Spanning Tree interface.
+ * Minimum Distance Matrix interface.
  *
  * @author Adrian Velasquez
  */
-public interface AdjacencyMatrix
+public interface MinimumDistanceMatrix
 {
     /**
      * Creates the adjacency matrix for the graph.
      * @param graph The graph to create the adjacency matrix
      * @return The adjacency matrix for the graph
      */
-    int[][] createAdjacencyMatrix( List<WeightedDirectedEdge> graph );
+    int[][] createMinimumDistanceMatrix(List<WeightedDirectedEdge> graph );
 
     /**
      * Finds the number of vertices in the graph.

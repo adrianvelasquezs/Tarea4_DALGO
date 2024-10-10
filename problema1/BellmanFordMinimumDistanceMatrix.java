@@ -7,12 +7,12 @@ import java.util.*;
  *
  * @author Adrian Velasquez
  */
-public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
+public class BellmanFordMinimumDistanceMatrix implements MinimumDistanceMatrix
 {
     private static final int INFINITY = Integer.MAX_VALUE;
 
     @Override
-    public int[][] createAdjacencyMatrix(List<WeightedDirectedEdge> graph )
+    public int[][] createMinimumDistanceMatrix(List<WeightedDirectedEdge> graph )
     {
         // set up the matrix
         int numVertices = findNumberOfVertices( graph );
