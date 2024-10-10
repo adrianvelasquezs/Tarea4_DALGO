@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class DijkstraAdjacencyMatrix implements AdjacencyMatrix
 {
-    private static final int INFINITY = Integer.MAX_VALUE;
+    private static final int INFINITY = -1;
 
     @Override
     public int[][] createAdjacencyMatrix( List<WeightedDirectedEdge> graph )
@@ -65,8 +65,8 @@ public class DijkstraAdjacencyMatrix implements AdjacencyMatrix
         boolean[] visited = new boolean[numVertices];
         PriorityQueue<WeightedDirectedEdge> pq = new PriorityQueue<>(Comparator.comparingInt(WeightedDirectedEdge::getWeight));
 
-        Arrays.fill(dist, INFINITY);
-        dist[startVertex] = 0;
+        Arrays.fill( dist, INFINITY );
+        dist[ startVertex ] = 0;
         pq.add( new WeightedDirectedEdge(startVertex, startVertex, 0 ));
 
         while (!pq.isEmpty())
