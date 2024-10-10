@@ -35,7 +35,7 @@ Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea,
 #### Formato de entrada y salida
 1) El formato del archivo de entrada son líneas de la forma  
 `[origen] [destino] [costo]`, separadas por tabulaciones.  
-2) El formato de la salida del programa es una matriz de adyacencia con las distancias mínimas entre los nodos. 
+2) El formato de la salida del programa es una matriz de con las distancias mínimas entre los nodos. 
 Cada fila representa el nodo origen y cada columna el nodo destino. Si es imposible llegar, se imprime un INTEGER.MAX_VALUE.
 Cada elemento en la fila está separado por 4 espacios, y cada fila está separada por una tabulación.
 
