@@ -21,12 +21,17 @@ public class MainProblem1
      * @param graphFile File with the graph edges
      * @throws IOException If the file can not be processed
      */
-    public void findAdjacencyMatrix(String graphFile ) throws IOException
+    public void findAdjacencyMatrix(String graphFile) throws IOException
     {
-        List<WeightedDirectedEdge> graph = loadGraph( graphFile );
-        MinimumDistanceMatrix algorithm = new DijkstraMinimumDistanceMatrix(); // CHANGE ALGORITHM HERE
-        int[][] matrix = algorithm.createMinimumDistanceMatrix( graph );
+        List<WeightedDirectedEdge> graph = loadGraph(graphFile);
+        MinimumDistanceMatrix algorithm = new FloydWarshallMinimumDistanceMatrix(); // CHANGE ALGORITHM HERE
+
+        long startTime = System.currentTimeMillis();
+        int[][] matrix = algorithm.createMinimumDistanceMatrix(graph);
+        long endTime = System.currentTimeMillis();
+
         printMatrix(matrix);
+        System.out.println("Tiempo de ejecución: " + (endTime - startTime) + " ms");
     }
 
     /**
@@ -72,7 +77,7 @@ public class MainProblem1
     }
 
     /**
-     * Main method for problem 1. Finds Adjacency Matrix for the given graph file.
+     * Main method for problem 1. Finds Minimum Distance MatrixI for the given graph file.
      * @param args Command line arguments
      *             args[0] File with the graph edges
      */

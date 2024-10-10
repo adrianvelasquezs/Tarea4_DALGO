@@ -16,9 +16,9 @@ encuentran archivos varios utilizados para la realización de los problemas (por
 #### Descripción de la implementación
 Para resolver el problema se implementaron 3 algoritmos diferentes, los cuales fueron
 el algoritmo de Dijkstra, el algoritmo de Bellman Ford y el algoritmo de Floyd Warshall. Para cada uno de estos
-se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraAdjacencyMatrix`,
-`BellmanFordAdjacencyMatrix` y `FloydWarshallAdjacencyMatrix` respectivamente. Para hacer uso de ellas, es necesario modificar
-el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `AdjacencyMatrix` por la clase
+se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraMinimumDistanceMatrix`,
+`BellmanFordMinimumDistanceMatrix` y `FloydWarshallMinimumDistanceMatrix` respectivamente. Para hacer uso de ellas, es necesario modificar
+el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `AdjacencyMinimumDistanceMatrix` por la clase
 que se desee utilizar (línea 27). Cada una de estas implementaciones encuentra las distancias mínimas entre todos los nodos.
 
 #### Consideraciones
@@ -31,6 +31,11 @@ dicho resultado en un archivo, se puede redirigir la salida estándar a un archi
 Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea, el comando sería 
 (puede redirigir la salida siguiendo las instrucciones anteriores):  
 `"[ubicacion_del_proyecto]/problema1/inputProblem1.txt"`.  
+
+**Tiempos de ejecución experimentales**  
+Para el algoritmo de Dijkstra, el tiempo de ejecución es de aproximadamente __2 ms__.  
+Para el algoritmo de Bellman Ford, el tiempo de ejecución es de aproximadamente __0 ms__.  
+Para el algoritmo de Floyd Warshall, el tiempo de ejecución es de aproximadamente __0 ms__.  
 
 #### Formato de entrada y salida
 1) El formato del archivo de entrada son líneas de la forma  

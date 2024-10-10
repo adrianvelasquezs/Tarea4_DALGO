@@ -1,7 +1,6 @@
 package problema1;
 
 import java.util.*;
-import java.lang.*;
 
 /**
  * Floyd-Warshall implementation for the Minimum Distance problem.
