@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Main class for problem 1.
- * This class is used to test the implementation of the classes in the problem 1. To change the algorithm used
+ * This class is used to test the implementation of the classes in the problem 1. To change the dijkstra used
  * to solve the problem, you can change the implementation of the method in line 27, as mentioned in the
  * README.md file.
  *
@@ -17,16 +17,16 @@ import java.util.List;
 public class MainProblem1
 {
     /**
-     * Finds the Minimum Spanning Tree for the given graph file.
-     * @param graphFile File with the edges of the graph.
-     * @throws IOException If the file cannot be processed
+     * Finds the adjacency matrix for the given graph file.
+     * @param graphFile File with the graph edges
+     * @throws IOException If the file can not be processed
      */
-    public void findMST( String graphFile ) throws IOException
+    public void findAdjacencyMatrix(String graphFile ) throws IOException
     {
         List<WeightedDirectedEdge> graph = loadGraph( graphFile );
-        MinimumSpanningTree algorithm = new DijkstraMST(); // CHANGE ALGORITHM HERE
-        List<WeightedDirectedEdge> tree = algorithm.createMST( graph );
-        printTree( tree );
+        AdjacencyMatrix algorithm = new DijkstraAdjacencyMatrix(); // CHANGE ALGORITHM HERE
+        int[][] matrix = algorithm.createAdjacencyMatrix( graph );
+        printMatrix(matrix);
     }
 
     /**
@@ -54,28 +54,31 @@ public class MainProblem1
     }
 
     /**
-     * Prints the tree to the standard output.
-     * @param tree The tree to print
+     * Prints the matrix to the standard output.
+     * @param matrix The matrix to print
      */
-    private void printTree( List<WeightedDirectedEdge> tree )
+    private void printMatrix(int[][] matrix)
     {
-        for (WeightedDirectedEdge edge : tree)
+        int n = matrix.length;
+        for ( int i = 0; i < n; i++ )
         {
-            int s = edge.getSource();
-            int d = edge.getDestination();
-            int w = edge.getWeight();
-            System.out.println( "source: " + s + ", destination: " + d + ", weight: " + w );
+            for ( int j = 0; j < n; j++ )
+            {
+                System.out.print( matrix[i][j] + " " );
+            }
+
+            System.out.println("\n");
         }
     }
 
     /**
-     * Main method for problem 1. Finds MST for the given graph file.
+     * Main method for problem 1. Finds Adjacency Matrix for the given graph file.
      * @param args Command line arguments
      *             args[0] File with the graph edges
      */
     public static void main( String[] args ) throws IOException
     {
         MainProblem1 main = new MainProblem1();
-        main.findMST( args[0] );
+        main.findAdjacencyMatrix( args[0] );
     }
 }

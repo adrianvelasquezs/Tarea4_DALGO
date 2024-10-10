@@ -13,6 +13,14 @@ encuentran archivos varios utilizados para la realización de los problemas (por
 
 **Nombre del archivo ejecutable:** `MainProblem1.java`
 
+#### Descripción de la implementación
+Para resolver el problema se implementaron 3 algoritmos diferentes, los cuales fueron
+el algoritmo de Dijkstra, el algoritmo de Bellman Ford y el algoritmo de Floyd Warshall. Para cada uno de estos
+se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraAdjacencyMatrix`,
+`BellmanFordAdjacencyMatrix` y `FloydWarshallAdjacencyMatrix` respectivamente. Para hacer uso de ellas, es necesario modificar
+el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `AdjacencyMatrix` por la clase
+que se desee utilizar (línea 27). Cada una de estas implementaciones encuentra las distancias mínimas entre todos los nodos
+
 #### Consideraciones
 Para ejecutar el programa, es necesario pasar como argumento la ubicación del archivo de entrada.
 Por ejemplo, si mi archivo se encuentra en la carpeta `C:/p1/src/documentos` y se llama `input.txt`, entonces el 
@@ -29,14 +37,6 @@ Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea,
 `[origen] [destino] [costo]`, separadas por tabulaciones.  
 2) El formato de la salida del programa son líneas de la forma  
 `source: [origen], destination: [destino], weight: [costo]`, separadas por tabulaciones.
-
-#### Descripción de la implementación
-Para resolver el problema se implementaron 3 algoritmos diferentes, los cuales fueron
-el algoritmo de Dijkstra, el algoritmo de Bellman Ford y el algoritmo de Floyd Warshall. Para cada uno de estos
-se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraMST`, 
-`BellmanFordMST` y `FloydWarshallMST` respectivamente. Para hacer uso de ellas, es necesario modificar
-el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `MinimumSpanningTree` por la clase
-que se desee utilizar (línea 27)./
 
 ### Problema 2
 
