@@ -44,6 +44,11 @@ public class FloydWarshallMinimumDistanceMatrix implements MinimumDistanceMatrix
         return numVertices + 1;
     }
 
+    /**
+     * Floyd-Warshall algorithm to find the minimum distance matrix for the given graph.
+     * @param matrix The matrix to find the shortest path
+     * @param numVertices The number of vertices in the graph
+     */
     private void floydWarshall( int[][] matrix, int numVertices )
     {
         for (int k = 0; k < numVertices; k++)

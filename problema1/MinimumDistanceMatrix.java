@@ -10,7 +10,7 @@ import java.util.List;
 public interface MinimumDistanceMatrix
 {
     /**
-     * Creates the adjacency matrix for the graph.
+     * Creates the minimum distance matrix for the graph.
      * @param graph The graph to create the adjacency matrix
      * @return The adjacency matrix for the graph
      */
