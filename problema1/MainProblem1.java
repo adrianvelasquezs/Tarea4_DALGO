@@ -24,7 +24,7 @@ public class MainProblem1
     public void findAdjacencyMatrix(String graphFile ) throws IOException
     {
         List<WeightedDirectedEdge> graph = loadGraph( graphFile );
-        AdjacencyMatrix algorithm = new DijkstraAdjacencyMatrix(); // CHANGE ALGORITHM HERE
+        AdjacencyMatrix algorithm = new BellmanFordAdjacencyMatrix(); // CHANGE ALGORITHM HERE
         int[][] matrix = algorithm.createAdjacencyMatrix( graph );
         printMatrix(matrix);
     }
@@ -64,7 +64,7 @@ public class MainProblem1
         {
             for ( int j = 0; j < n; j++ )
             {
-                System.out.print( matrix[i][j] + " " );
+                System.out.print( matrix[i][j] + "   " );
             }
 
             System.out.println("\n");

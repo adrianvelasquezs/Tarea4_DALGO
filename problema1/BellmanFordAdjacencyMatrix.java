@@ -1,6 +1,6 @@
 package problema1;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Bellman Ford dijkstra implementation for the Minimum Spanning Tree problem.
@@ -50,10 +50,44 @@ public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
         return numVertices + 1;
     }
 
-    private int bellmanFord( List<WeightedDirectedEdge> graph, int i, int j, int numVertices )
+    /**
+     * Bellman Ford algorithm to find the shortest path from startVertex to endVertex in the graph.
+     * @param graph The graph to find the shortest path
+     * @param startVertex The vertex to start the path
+     * @param endVertex The vertex to end the path
+     * @param numVertices The number of vertices in the graph
+     * @return The shortest path from startVertex to endVertex
+     */
+    private int bellmanFord( List<WeightedDirectedEdge> graph, int startVertex, int endVertex, int numVertices )
     {
-        // TODO implement Bellman Ford
+        int[] dist = new int[numVertices];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[startVertex] = 0;
 
-        return -1;
+        // Relax all edges |V| - 1 times
+        for (int i = 1; i < numVertices; i++)
+        {
+            for (WeightedDirectedEdge edge : graph)
+            {
+                int u = edge.getSource();
+                int v = edge.getDestination();
+                int weight = edge.getWeight();
+                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) dist[v] = dist[u] + weight;
+            }
+        }
+
+        // Check for negative-weight cycles
+        for ( WeightedDirectedEdge edge : graph )
+        {
+            int u = edge.getSource();
+            int v = edge.getDestination();
+            int weight = edge.getWeight();
+            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v])
+            {
+                throw new IllegalArgumentException("Graph contains a negative-weight cycle");
+            }
+        }
+
+        return dist[endVertex];
     }
 }

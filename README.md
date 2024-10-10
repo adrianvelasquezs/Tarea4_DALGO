@@ -19,7 +19,7 @@ el algoritmo de Dijkstra, el algoritmo de Bellman Ford y el algoritmo de Floyd W
 se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraAdjacencyMatrix`,
 `BellmanFordAdjacencyMatrix` y `FloydWarshallAdjacencyMatrix` respectivamente. Para hacer uso de ellas, es necesario modificar
 el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `AdjacencyMatrix` por la clase
-que se desee utilizar (línea 27). Cada una de estas implementaciones encuentra las distancias mínimas entre todos los nodos
+que se desee utilizar (línea 27). Cada una de estas implementaciones encuentra las distancias mínimas entre todos los nodos.
 
 #### Consideraciones
 Para ejecutar el programa, es necesario pasar como argumento la ubicación del archivo de entrada.
@@ -36,7 +36,9 @@ Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea,
 1) El formato del archivo de entrada son líneas de la forma  
 `[origen] [destino] [costo]`, separadas por tabulaciones.  
 2) El formato de la salida del programa es una matriz de adyacencia con las distancias mínimas entre los nodos. 
-Cada fila representa el nodo origen y cada columna el nodo destino. Si es imposible llegar, se imprime un -1.
+Cada fila representa el nodo origen y cada columna el nodo destino. Si es imposible llegar, se imprime un -1. Esto se 
+hace teniendo en cuenta que, incluso si el algoritmo de Bellman-Ford es capaz de detectar ciclos negativos, el grafo 
+solo tendrá pesos con números naturales.
 
 ### Problema 2
 
