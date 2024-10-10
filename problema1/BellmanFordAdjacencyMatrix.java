@@ -9,10 +9,11 @@ import java.util.*;
  */
 public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
 {
+    private static final int INFINITY = Integer.MAX_VALUE;
+
     @Override
     public int[][] createAdjacencyMatrix(List<WeightedDirectedEdge> graph )
     {
-        // TODO implement Bellman Ford dijkstra
         // set up the matrix
         int numVertices = findNumberOfVertices( graph );
         int lastVertex = numVertices - 1;
@@ -30,7 +31,7 @@ public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
                 else
                 {
                     matrix[ i ][ j ] = bellmanFord( graph, i, j, numVertices ); // find the shortest path from i to j
-                    matrix[ j ][ i ] = matrix[ i ][ j ]; // the shortest path from i to j is the same as from j to i
+                    matrix[ j ][ i ] = bellmanFord( graph, j, i, numVertices ); // the shortest path from i to j is the same as from j to i
                 }
                 j++;
             }
@@ -61,7 +62,7 @@ public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
     private int bellmanFord( List<WeightedDirectedEdge> graph, int startVertex, int endVertex, int numVertices )
     {
         int[] dist = new int[numVertices];
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        Arrays.fill(dist, INFINITY);
         dist[startVertex] = 0;
 
         // Relax all edges |V| - 1 times
@@ -72,7 +73,7 @@ public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
                 int u = edge.getSource();
                 int v = edge.getDestination();
                 int weight = edge.getWeight();
-                if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) dist[v] = dist[u] + weight;
+                if (dist[u] != INFINITY && dist[u] + weight < dist[v]) dist[v] = dist[u] + weight;
             }
         }
 
@@ -82,7 +83,7 @@ public class BellmanFordAdjacencyMatrix implements AdjacencyMatrix
             int u = edge.getSource();
             int v = edge.getDestination();
             int weight = edge.getWeight();
-            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v])
+            if (dist[u] != INFINITY && dist[u] + weight < dist[v])
             {
                 throw new IllegalArgumentException("Graph contains a negative-weight cycle");
             }

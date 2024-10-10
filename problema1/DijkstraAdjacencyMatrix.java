@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class DijkstraAdjacencyMatrix implements AdjacencyMatrix
 {
-    private static final int INFINITY = -1;
+    private static final int INFINITY = Integer.MAX_VALUE;
 
     @Override
     public int[][] createAdjacencyMatrix( List<WeightedDirectedEdge> graph )
@@ -31,7 +31,7 @@ public class DijkstraAdjacencyMatrix implements AdjacencyMatrix
                 else
                 {
                     matrix[ i ][ j ] = dijkstra( graph, i, j, numVertices ); // find the shortest path from i to j
-                    matrix[ j ][ i ] = matrix[ i ][ j ]; // the shortest path from i to j is the same as from j to i
+                    matrix[ j ][ i ] = dijkstra( graph, j, i, numVertices ); // the shortest path from i to j is the same as from j to i
                 }
                 j++;
             }

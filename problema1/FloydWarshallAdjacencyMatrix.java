@@ -9,10 +9,12 @@ import java.util.List;
  */
 public class FloydWarshallAdjacencyMatrix implements AdjacencyMatrix
 {
+    private static final int INFINITY = Integer.MAX_VALUE;
+
     @Override
     public int[][] createAdjacencyMatrix(List<WeightedDirectedEdge> graph )
     {
-        // TODO Implement Floyd-Warshall dijkstra
+        // TODO Implement Floyd-Warshall
 
         int[][] matrix = new int[graph.size()][3];
 
