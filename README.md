@@ -16,7 +16,7 @@ Para resolver el problema se implementaron 3 algoritmos diferentes, los cuales f
 el algoritmo de Dijkstra, el algoritmo de Bellman Ford y el algoritmo de Floyd Warshall. Para cada uno de estos
 se creó una clase que implementa la interfaz MinimumSpanningTree. Estas clases son `DijkstraMinimumDistanceMatrix`,
 `BellmanFordMinimumDistanceMatrix` y `FloydWarshallMinimumDistanceMatrix` respectivamente. Para hacer uso de ellas, es necesario modificar
-el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `AdjacencyMinimumDistanceMatrix` por la clase
+el código en el archivo `MainProblem1.java` y cambiar la instancia de la clase `MinimumDistanceMatrix` por la clase
 que se desee utilizar (línea 27). Cada una de estas implementaciones encuentra las distancias mínimas entre todos los nodos.
 #### Consideraciones
 Para ejecutar el programa, es necesario pasar como argumento la ubicación del archivo de entrada.
