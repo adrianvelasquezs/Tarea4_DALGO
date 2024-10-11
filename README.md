@@ -41,9 +41,17 @@ Cada elemento en la fila está separado por 4 espacios, y cada fila está separa
 
 ### Problema 2
 **Nombre del archivo ejecutable:** `MainProblem2.java`
+- Abra en una terminal externa el directorio `problema2`, por ejemplo `"C:/p1/Tarea4_DALGO/problema2"`
+- En el mismo directorio se encuentra un archivo `in.txt` y `out.txt`. Ingrese en el primero de estos los arcos del grafo. En el archivo ya se encuentra un ejemplo de input
+- Ejecute en su terminal `java -cp bin MainProblem2 < in.txt > out.txt`
+- Revice en `out.txt` el resultado
 
 ### Problema 3
 **Nombre del archivo ejecutable:** `MainProblem3.java`
+- Abra en una terminal externa el directorio `problema3`, por ejemplo `"C:/p1/Tarea4_DALGO/problema3"`
+- En el mismo directorio se encuentra un archivo `in.txt` y `out.txt`. Ingrese en el primero de estos los arcos del grafo. En el archivo ya se encuentra un ejemplo de input
+- Ejecute en su terminal `java -cp bin MainProblem3 < in.txt > out.txt`
+- Revice en `out.txt` el resultado
 
 ### Problema 4
 **Nombre del archivo ejecutable:** `MainProblem4.java`
