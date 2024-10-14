@@ -1,4 +1,4 @@
-package classes;
+package problema2.classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;

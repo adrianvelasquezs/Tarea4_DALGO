@@ -1,3 +1,5 @@
+package problema2;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -8,7 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.io.InputStreamReader;
 
-import classes.*;
+import problema2.classes.BFS;
+import problema2.classes.Edge;
+import problema2.classes.Graph;
 
 public class MainProblem2 {
     public static void main(String[] args) throws IOException {

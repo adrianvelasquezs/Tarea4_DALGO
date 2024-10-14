@@ -1,4 +1,4 @@
-package classes;
+package problema2.classes;
 
 public class Edge {
 
