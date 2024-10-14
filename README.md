@@ -35,15 +35,34 @@ Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea,
 #### Formato de entrada y salida
 1) El formato del archivo de entrada son líneas de la forma  
 `[origen] [destino] [costo]`, separadas por tabulaciones.  
-2) El formato de la salida del programa es una matriz de adyacencia con las distancias mínimas entre los nodos. 
+2) El formato de la salida del programa es una matriz de con las distancias mínimas entre los nodos. 
 Cada fila representa el nodo origen y cada columna el nodo destino. Si es imposible llegar, se imprime un INTEGER.MAX_VALUE.
 Cada elemento en la fila está separado por 4 espacios, y cada fila está separada por una tabulación.
 
 ### Problema 2
 **Nombre del archivo ejecutable:** `MainProblem2.java`
+- Abra en una terminal externa el directorio `problema2`, por ejemplo `"C:/p1/Tarea4_DALGO/problema2"`
+- En el mismo directorio se encuentra un archivo `in.txt` y `out.txt`. Ingrese en el primero de estos los arcos del grafo, y recuerde que **se sigue el mismo formato de entrada que el problema 1**. En el archivo ya se encuentra un ejemplo de input.
+- Ejecute en su terminal `java -cp bin MainProblem2 < in.txt > out.txt`
+- Revise en `out.txt` el resultado
+#### Formato de salida
+En cada linea del archivo de texto `out.txt` hay una lista (representada con corchetes) de los nodos que pertenecen a un mismo camino.
+
+Por ejemplo:
+
+`[nodo1, nodo2, nodo3]`
+
+`[nodo4, nodo5]`
 
 ### Problema 3
 **Nombre del archivo ejecutable:** `MainProblem3.java`
+- Abra en una terminal externa el directorio `problema3`, por ejemplo `"C:/p1/Tarea4_DALGO/problema3"`
+- En el mismo directorio se encuentra un archivo `in.txt` y `out.txt`. Ingrese en el primero de estos los arcos del grafo, y recuerde que **se sigue el mismo formato de entrada que el problema 1**. En el archivo ya se encuentra un ejemplo de input
+- Ejecute en su terminal `java -cp bin MainProblem3 < in.txt > out.txt`
+- Revise en `out.txt` el resultado
+
+#### Formato de salida
+En `out.txt` se guarda el grafo resultante, puede observar en cada linea del archivo los arcos de dicho grafo.
 
 ### Problema 4
 **Nombre del archivo ejecutable:** `MainProblem4.java`
