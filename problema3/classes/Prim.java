@@ -1,4 +1,4 @@
-package classes;
+package problema3.classes;
 
 import java.util.ArrayList;
 import java.util.Comparator;
