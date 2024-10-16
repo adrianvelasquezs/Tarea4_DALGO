@@ -10,68 +10,75 @@ import java.util.*;
  */
 public class MainProblem4 {
 
-    private static int getMaximumBooks(List<Factory> factories, List<Warehouse> warehouses, List<Library> libraries,
+    private static int getMaximumBooks( List<Integer> factories, List<Warehouse> warehouses, List<Library> libraries,
                                        List<Truck> trucks) {
         int totalBooks = 0;
-        int i;
 
-        // Mapa para almacenar la capacidad disponible en cada bodega
-        Map<String, Integer> warehouseCapacity = new HashMap<>();
-        i = 1;
-        for (Warehouse warehouse : warehouses) {
-            warehouseCapacity.put("W"+i, warehouse.getCapacity());
-            i++;
-        }
+        int f = factories.size();
+        int w = warehouses.size();
+        int l = libraries.size();
+        int n = f + w + l; // calculate the total number of nodes
+        int[][] graph = new int[n][n]; // make adjacency matrix
+        buildGraph(graph, trucks, n, f, w, l);
 
-        // Mapa para almacenar la capacidad disponible en cada librería
-        Map<String, Integer> libraryCapacity = new HashMap<>();
-        i = 1;
-        for (Library library : libraries) {
-            libraryCapacity.put("L"+i, library.getCapacity());
-            i++;
-        }
 
-        // Procesar cada camión
-        for (Truck truck : trucks) {
-            String startPoint = truck.getStartPoint();
-            String endPoint = truck.getEndPoint();
-            int truckCapacity = truck.getCapacity();
-
-            if (startPoint.startsWith("F") && endPoint.startsWith("W")) {
-                // Transporte de fábrica a bodega
-                int availableCapacity = Math.min(truckCapacity, warehouseCapacity.get(endPoint));
-                totalBooks += availableCapacity;
-                warehouseCapacity.put(endPoint, warehouseCapacity.get(endPoint) - availableCapacity);
-            } else if (startPoint.startsWith("W") && endPoint.startsWith("L")) {
-                // Transporte de bodega a librería
-                int availableCapacity = Math.min(truckCapacity, libraryCapacity.get(endPoint));
-                totalBooks += availableCapacity;
-                libraryCapacity.put(endPoint, libraryCapacity.get(endPoint) - availableCapacity);
-            } else if (startPoint.startsWith("F") && endPoint.startsWith("L")) {
-                // Transporte directo de fábrica a librería
-                int availableCapacity = Math.min(truckCapacity, libraryCapacity.get(endPoint));
-                totalBooks += availableCapacity;
-                libraryCapacity.put(endPoint, libraryCapacity.get(endPoint) - availableCapacity);
-            }
-        }
 
         return totalBooks;
     }
 
+    private static void buildGraph(int[][] graph, List<Truck> trucks, int n, int f, int w, int l)
+    {
+        for ( int i = 0; i < n; i++) {
+            Arrays.fill(graph[i], Integer.MAX_VALUE);
+            graph[i][i] = 0;
+        }
+
+        for (Truck truck : trucks) {
+            int start = convertToIndex( truck.getStartPoint(), f, w );
+            int end = convertToIndex( truck.getEndPoint(), f, w );
+            List<String> middlePoints = truck.getMiddlePoints();
+            if ( middlePoints.isEmpty() ) {
+                graph[start][end] = truck.getCapacity(); // add the capacity of the truck
+                continue;
+            }
+            int prev = start;
+            for (String middlePoint : middlePoints) {
+                int middle = convertToIndex( middlePoint, f, w );
+                graph[prev][middle] = truck.getCapacity(); // add the capacity of the truck
+                prev = middle;
+            }
+        }
+    }
+
+    private static int convertToIndex( String s, int f, int w )
+    {
+        int index = Integer.parseInt(String.valueOf(s.charAt(1))) - 1;
+        if ( s.charAt(0) == 'F' ) {
+            return index;
+        }
+        if ( s.charAt(0) == 'W' ) {
+            return f + index;
+        }
+        return f + w + index;
+    }
+
     public static void main(String[] args) {
-        List<Factory> factories = new ArrayList<>();
-        List<Warehouse> warehouses = new ArrayList<>();
+        List<Integer> factories = new ArrayList<>();
         List<Library> libraries = new ArrayList<>();
+        List<Warehouse> warehouses = new ArrayList<>();
         List<Truck> trucks = new ArrayList<>();
 
         // Ejemplo de datos
-        factories.add(new Factory(500));
-        warehouses.add(new Warehouse(300));
-        libraries.add(new Library(400));
-        trucks.add(new Truck(100, "F1", "W1"));
-        trucks.add(new Truck(200, "W1", "L1"));
-        trucks.add(new Truck(150, "F1", "L1"));
-
+        factories.add(1);
+        factories.add(2);
+        libraries.add(new Library());
+        libraries.add(new Library());
+        warehouses.add(new Warehouse(10));
+        warehouses.add(new Warehouse(10));
+        trucks.add(new Truck(10, "F1", new ArrayList<>(List.of("W1")), "L1"));
+        trucks.add(new Truck(10, "F1", "L1"));
+        trucks.add(new Truck(10, "F2", new ArrayList<>(List.of("W2")), "L2"));
+        trucks.add(new Truck(10, "F2", new ArrayList<>(List.of("W1")), "L1"));
         System.out.println(getMaximumBooks(factories, warehouses, libraries, trucks));
     }
 }

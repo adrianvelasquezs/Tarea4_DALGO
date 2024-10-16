@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Truck {
-    private int capacity;
+    private final int capacity;
+    private int currentCapacity;
     private String startPoint;
     private List<String> middlePoints;
     private String endPoint;
@@ -14,6 +15,7 @@ public class Truck {
         this.startPoint = startPoint;
         this.middlePoints = new ArrayList<>();
         this.endPoint = endPoint;
+        this.currentCapacity = 0;
     }
 
     public Truck(int capacity, String startPoint, ArrayList<String> middlePoints, String endPoint) {
@@ -33,5 +35,23 @@ public class Truck {
 
     public String getEndPoint() {
         return endPoint;
+    }
+
+    public List<String> getMiddlePoints() {
+        return middlePoints;
+    }
+
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public int addBooks(int books) {
+        this.currentCapacity += books;
+        return this.currentCapacity;
+    }
+
+    public int removeBooks(int books) {
+        this.currentCapacity -= books;
+        return this.currentCapacity;
     }
 }
