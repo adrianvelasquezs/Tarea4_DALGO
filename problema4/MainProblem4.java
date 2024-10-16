@@ -10,23 +10,30 @@ import java.util.*;
  */
 public class MainProblem4 {
 
-    private static int getMaximumBooks( List<Integer> factories, List<Warehouse> warehouses, List<Library> libraries,
+    private static int getMaximumBooks( Integer factories, List<Warehouse> warehouses, List<Integer> libraries,
                                        List<Truck> trucks) {
         int totalBooks = 0;
 
-        int f = factories.size();
         int w = warehouses.size();
         int l = libraries.size();
-        int n = f + w + l; // calculate the total number of nodes
+        int n = factories + w + l; // calculate the total number of nodes
         int[][] graph = new int[n][n]; // make adjacency matrix
-        buildGraph(graph, trucks, n, f, w, l);
+        buildGraph( graph, trucks, n, factories, w );
 
 
 
         return totalBooks;
     }
 
-    private static void buildGraph(int[][] graph, List<Truck> trucks, int n, int f, int w, int l)
+    /**
+     * Build the graph with the given data. The graph is represented as an adjacency matrix.
+     * @param graph the adjacency matrix
+     * @param trucks the list of trucks
+     * @param n the number of nodes
+     * @param f the number of factories
+     * @param w the number of warehouses
+     */
+    private static void buildGraph(int[][] graph, List<Truck> trucks, int n, int f, int w )
     {
         for ( int i = 0; i < n; i++) {
             Arrays.fill(graph[i], Integer.MAX_VALUE);
@@ -47,9 +54,17 @@ public class MainProblem4 {
                 graph[prev][middle] = truck.getCapacity(); // add the capacity of the truck
                 prev = middle;
             }
+            graph[prev][end] = truck.getCapacity(); // add the capacity of the truck
         }
     }
 
+    /**
+     * Convert the string to the index of the node in the graph.
+     * @param s the string to convert
+     * @param f the number of factories
+     * @param w the number of warehouses
+     * @return the index of the node in the graph
+     */
     private static int convertToIndex( String s, int f, int w )
     {
         int index = Integer.parseInt(String.valueOf(s.charAt(1))) - 1;
@@ -62,23 +77,27 @@ public class MainProblem4 {
         return f + w + index;
     }
 
+    /**
+     * Main method to test the implementation of the classes.
+     * @param args the arguments
+     */
     public static void main(String[] args) {
-        List<Integer> factories = new ArrayList<>();
-        List<Library> libraries = new ArrayList<>();
+        int factories = 0;
         List<Warehouse> warehouses = new ArrayList<>();
+        List<Integer> libraries = new ArrayList<>();
         List<Truck> trucks = new ArrayList<>();
 
         // Ejemplo de datos
-        factories.add(1);
-        factories.add(2);
-        libraries.add(new Library());
-        libraries.add(new Library());
+        factories = 2;
         warehouses.add(new Warehouse(10));
         warehouses.add(new Warehouse(10));
+        libraries.add(0);
+        libraries.add(0);
+        libraries.add(0);
         trucks.add(new Truck(10, "F1", new ArrayList<>(List.of("W1")), "L1"));
-        trucks.add(new Truck(10, "F1", "L1"));
-        trucks.add(new Truck(10, "F2", new ArrayList<>(List.of("W2")), "L2"));
-        trucks.add(new Truck(10, "F2", new ArrayList<>(List.of("W1")), "L1"));
+        trucks.add(new Truck(15, "F1", "L1"));
+        trucks.add(new Truck(20, "F2", new ArrayList<>(List.of("W2")), "L2"));
+        trucks.add(new Truck(30, "F2", new ArrayList<>(List.of("W1")), "L3"));
         System.out.println(getMaximumBooks(factories, warehouses, libraries, trucks));
     }
 }
