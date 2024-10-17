@@ -60,9 +60,33 @@ Por ejemplo:
 - En el mismo directorio se encuentra un archivo `in.txt` y `out.txt`. Ingrese en el primero de estos los arcos del grafo, y recuerde que **se sigue el mismo formato de entrada que el problema 1**. En el archivo ya se encuentra un ejemplo de input
 - Ejecute en su terminal `java -cp bin MainProblem3 < in.txt > out.txt`
 - Revise en `out.txt` el resultado
-
 #### Formato de salida
 En `out.txt` se guarda el grafo resultante, puede observar en cada linea del archivo los arcos de dicho grafo.
 
 ### Problema 4
 **Nombre del archivo ejecutable:** `MainProblem4.java`
+- Abra en una terminal externa el directorio `problema4`, por ejemplo `"C:/p1/Tarea4_DALGO/problema4"`
+#### Instrucciones de uso
+Encontrará 3 archivos, `inputProblem4_Trucks.txt`, `inputProblem4_Warehouses.txt` y `outputProblem4.txt`. 
+Si desea utilizar estos archivos de prueba, debe pasarlos como parámetros al programa **en ese mismo orden**. Con esto en mente,
+puede seguir las mismas recomendaciones del problema 1 a la hora de ejecutar y redirigir la salida estándar a un archivo.
+#### Formato de entrada
+El archivo `inputProblem4_Trucks.txt` tiene líneas separadas con tabulaciones con el siguiente formato:  
+`[capacidad] [inicio] [camino] [fin]`  
+Donde `capacidad` es la capacidad de carga del camión, `inicio` es el nodo de inicio, `camino` es el camino que debe seguir 
+el camión (podría no tener benign camino) y `fin` es el nodo final. Para representar una fábrica, se debe poner `FX` 
+donde `X` es el número de la fábrica. Para representar una bodega, se debe poner `WX` donde `X` es el número de la bodega. 
+Para representar una librería, se debe poner `LX` donde `X` es el número de la librería. Es **esencial** que:
+1) La capacidad sea un número entero positivo.
+2) El nodo de inicio sea una fábrica.
+3) El nodo final sea una librería.
+4) El camino no puede contener librerías ni fábricas.
+5) Es necesario que el número `X` de cada uno de los elementos sea consecutivo y empiece en 1. No puede haber saltos en los números.
+
+El archivo `inputProblem4_Warehouses.txt` tiene líneas separadas con tabulaciones con el siguiente formato:  
+`[capacidad]`  
+Donde `capacidad` es la capacidad de carga de la bodega. Es esencial que:
+1) La capacidad sea un número entero positivo.
+2) La cantidad de líneas en este archivo sea igual a la cantidad de bodegas definidas en el archivo `inputProblem4_Trucks.txt`. 
+3) Si no hay bodegas, el archivo debe estar vacío (**debe haber un archivo en cualquier caso**). 
+4) Cada línea representa la capacidad de carga de la bodega `X` donde `X` es el número de la línea, empezando en 1.
