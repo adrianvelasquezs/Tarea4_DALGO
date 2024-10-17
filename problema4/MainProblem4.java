@@ -93,6 +93,15 @@ public class MainProblem4 {
         return getMaximumBooks(factories, warehouses, libraries, trucks);
     }
 
+    /**
+     * Calculate the maximum number of books that can be transported.
+     *
+     * @param factories   the number of factories
+     * @param warehouses  the list of warehouses
+     * @param libraries   the list of libraries
+     * @param trucks      the list of trucks
+     * @return the maximum number of books that can be transported
+     */
     private static int getMaximumBooks( Integer factories, List<Warehouse> warehouses, List<Integer> libraries,
                                        List<Truck> trucks) {
         int totalBooks = 0;
