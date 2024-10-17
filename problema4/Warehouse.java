@@ -1,7 +1,7 @@
 package problema4;
 
 public class Warehouse {
-    private final int capacity;
+    private int capacity;
     private int currentCapacity;
 
     public Warehouse(int capacity) {
@@ -25,5 +25,9 @@ public class Warehouse {
     public int removeBooks(int books) {
         this.currentCapacity -= books;
         return this.currentCapacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

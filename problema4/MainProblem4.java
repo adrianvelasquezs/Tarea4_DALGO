@@ -1,6 +1,7 @@
 package problema4;
 
 import java.util.*;
+import java.io.*;
 
 /**
  * Main class for problem 4.
@@ -9,6 +10,88 @@ import java.util.*;
  * @author Adrian Velasquez 202222737
  */
 public class MainProblem4 {
+
+    /**
+     * Load the data from the files and calculate the maximum number of books that can be transported.
+     *
+     * @param trucksFile     the file with the trucks data
+     * @param warehousesFile the file with the warehouses data
+     * @return the maximum number of books that can be transported
+     * @throws IOException if there is an error reading the files or if the data provided is not consistent
+     */
+    private static int loadMaximumBooks( String trucksFile, String warehousesFile  ) throws IOException
+    {
+        int factories = 0;
+        List<Warehouse> warehouses = new ArrayList<>();
+        List<Integer> libraries = new ArrayList<>();
+        List<Truck> trucks = new ArrayList<>();
+
+        // =============================================================================================================
+        // Load trucks, warehouses and factories
+        FileReader fReader = new FileReader( trucksFile );
+        BufferedReader inF = new BufferedReader(fReader);
+        String line = inF.readLine();
+        while (line != null) {
+            String[] data = line.split(" ");
+
+            int capacity = Integer.parseInt(data[0]);
+            String first = data[1];
+            List<String> middlePoints = new ArrayList<>();
+            String last = data[data.length - 1];
+
+            if ( data.length > 2 ){
+                middlePoints.addAll(Arrays.asList(data).subList(2, data.length - 1));
+                Truck t = new Truck(capacity, first, middlePoints, last);
+                trucks.add( t );
+            } else {
+                Truck t = new Truck(capacity, first, last);
+                trucks.add( t );
+            }
+            // Check if the factories, warehouses and libraries are in the data
+            // Update the data structures accordingly
+            int index;
+            index = Integer.parseInt(String.valueOf(first.charAt(1)));
+            if ( first.charAt(0) == 'F' && index > factories )
+                factories = index;
+            index= Integer.parseInt(String.valueOf(last.charAt(1)));
+            if ( last.charAt(0) == 'L' && index > libraries.size() )
+                libraries.add(0);
+            for ( String point : middlePoints )
+            {
+                char firstChar = point.charAt(0);
+                index = Integer.parseInt(String.valueOf(point.charAt(1)));
+                switch ( firstChar )
+                {
+                    case 'F':
+                        factories = Math.max(factories, index);
+                        break;
+                    case 'W':
+                        if ( index > warehouses.size() ) warehouses.add(new Warehouse(0));
+                        break;
+                    case 'L':
+                        if ( index > libraries.size() ) libraries.add(0);
+                        break;
+                }
+            }
+            line = inF.readLine();
+        }
+
+        // =============================================================================================================
+        // Load warehouses capacities
+        FileReader wReader = new FileReader( warehousesFile );
+        BufferedReader inW = new BufferedReader(wReader);
+        line = inW.readLine();
+        int capacity = Integer.parseInt(line);
+        int i = 0;
+        while (line != null) {
+            capacity = Integer.parseInt(line);
+            warehouses.get(i).setCapacity(capacity);
+            line = inW.readLine();
+            i++;
+        }
+
+        return getMaximumBooks(factories, warehouses, libraries, trucks);
+    }
 
     private static int getMaximumBooks( Integer factories, List<Warehouse> warehouses, List<Integer> libraries,
                                        List<Truck> trucks) {
@@ -38,11 +121,11 @@ public class MainProblem4 {
         for ( int i = 0; i < n; i++) {
             Arrays.fill(graph[i], Integer.MIN_VALUE);
             graph[i][i] = 0;
-            if ( i < f + 1 ) {
-                graph[0][i] = 0; // connect the source to the factories
+            if ( i <= f + 1 ) {
+                graph[0][i] = Integer.MAX_VALUE; // connect the source to the factories
             }
             if ( i > f + w + 1 ) {
-                graph[i][n - 1] = 0; // connect the warehouses to the sink
+                graph[i][n - 1] = Integer.MAX_VALUE; // connect the warehouses to the sink
             }
         }
 
@@ -160,25 +243,15 @@ public class MainProblem4 {
     /**
      * Main method to test the implementation of the classes.
      *
-     * @param args the arguments
+     * @param args the command line arguments
+     *             args[0] the file with the trucks data
+     *             args[1] the file with the warehouses data
      */
     public static void main(String[] args) {
-        int factories = 0;
-        List<Warehouse> warehouses = new ArrayList<>();
-        List<Integer> libraries = new ArrayList<>();
-        List<Truck> trucks = new ArrayList<>();
-
-        // Ejemplo de datos
-        factories = 2;
-        warehouses.add(new Warehouse(10));
-        warehouses.add(new Warehouse(10));
-        libraries.add(0);
-        libraries.add(0);
-        libraries.add(0);
-        trucks.add(new Truck(10, "F1", new ArrayList<>(List.of("W1")), "L1"));
-        trucks.add(new Truck(15, "F1", "L1"));
-        trucks.add(new Truck(20, "F2", new ArrayList<>(List.of("W2")), "L2"));
-        trucks.add(new Truck(30, "F2", new ArrayList<>(List.of("W1")), "L3"));
-        System.out.println(getMaximumBooks(factories, warehouses, libraries, trucks));
+        try {
+            System.out.println(loadMaximumBooks( args[0], args[1] ));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

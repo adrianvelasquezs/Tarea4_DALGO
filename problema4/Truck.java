@@ -18,7 +18,7 @@ public class Truck {
         this.currentCapacity = 0;
     }
 
-    public Truck(int capacity, String startPoint, ArrayList<String> middlePoints, String endPoint) {
+    public Truck(int capacity, String startPoint, List<String> middlePoints, String endPoint) {
         this.capacity = capacity;
         this.startPoint = startPoint;
         this.middlePoints = middlePoints;
