@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Main class for problem 1.
- * This class is used to test the implementation of the classes in the problem 1. To change the dijkstra used
+ * This class is used to test the implementation of the classes in the problem 1. To change the FloydWarshall used
  * to solve the problem, you can change the implementation of the method in line 27, as mentioned in the
  * README.md file.
  *

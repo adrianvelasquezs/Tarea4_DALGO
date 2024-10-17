@@ -28,13 +28,13 @@ dicho resultado en un archivo, se puede redirigir la salida estándar a un archi
 Si desea probar el programa con el ejemplo de entrada proporcionado en la tarea, el comando sería 
 (puede redirigir la salida siguiendo las instrucciones anteriores):  
 `"[ubicacion_del_proyecto]/problema1/inputProblem1.txt"`.  
-#### Tiempo de ejecución
-- Para el algoritmo de Dijkstra, el tiempo de ejecución es de aproximadamente __2 ms__.  
-- Para el algoritmo de Bellman Ford, el tiempo de ejecución es de aproximadamente __0 ms__.  
-- Para el algoritmo de Floyd Warshall, el tiempo de ejecución es de aproximadamente __0 ms__.
+#### Tiempo de ejecución (5, 100, 1000 datos respectivamente)
+- Para el algoritmo de Dijkstra, el tiempo de ejecución es de aproximadamente __2 ms__, __10000 ms__ y __N/A ms__.  
+- Para el algoritmo de Bellman Ford, el tiempo de ejecución es de aproximadamente __0 ms__, __12543 ms__ y __N/A ms__.  
+- Para el algoritmo de Floyd Warshall, el tiempo de ejecución es de aproximadamente __0 ms__, __8 ms__ y __1521 ms__.
 #### Formato de entrada y salida
 1) El formato del archivo de entrada son líneas de la forma  
-`[origen] [destino] [costo]`, separadas por tabulaciones.  
+`[origen] [destino] [costo]`, separadas por tabulaciones La última línea muestra el tiempo de ejecución.  
 2) El formato de la salida del programa es una matriz de con las distancias mínimas entre los nodos. 
 Cada fila representa el nodo origen y cada columna el nodo destino. Si es imposible llegar, se imprime un INTEGER.MAX_VALUE.
 Cada elemento en la fila está separado por 4 espacios, y cada fila está separada por una tabulación.
