@@ -4,7 +4,7 @@
 2) **Nombre:** Andrés Botero Ruiz, **Código:** 202223503
 
 ## Instrucciones de uso
-En el proyecto hay una serie de paquetes titulados "problemaX" donde X es el número del problema. Cada uno de estos
+En el proyecto hay una serie de paquetes titulados `problemaX` donde `X` es el número del problema. Cada uno de estos
 paquetes contiene un archivo `MainProblemX.java` que contiene el código de la solución al problema. A continuación se
 detallan las instrucciones de uso para cada uno de los problemas. Por otro lado, en el paquete `documentos` se 
 encuentran archivos varios utilizados para la realización de los problemas (por ejemplo, las instrucciones de la tarea). 
@@ -90,3 +90,6 @@ Donde `capacidad` es la capacidad de carga de la bodega. Es esencial que:
 2) La cantidad de líneas en este archivo sea igual a la cantidad de bodegas definidas en el archivo `inputProblem4_Trucks.txt`. 
 3) Si no hay bodegas, el archivo debe estar vacío (**debe haber un archivo en cualquier caso**). 
 4) Cada línea representa la capacidad de carga de la bodega `X` donde `X` es el número de la línea, empezando en 1.
+
+#### Formato de salida
+El archivo `outputProblem4.txt` solo tiene una línea con la cantidad de libros máxima dada la configuración específica.
